@@ -1,5 +1,4 @@
-import { createContext, useContext } from "react";
-import { useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../App";
 
 function Records() {

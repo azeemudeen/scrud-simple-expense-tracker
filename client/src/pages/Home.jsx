@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import AddRecord from '../components/records/AddRecord'
 import Search from '../components/search/Search'
 import ViewRecords from '../components/records/ViewRecords';
