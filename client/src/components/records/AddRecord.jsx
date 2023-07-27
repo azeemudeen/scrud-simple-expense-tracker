@@ -4,7 +4,8 @@ import { AppContext } from "../../App";
 
 function AddRecord() {
 
-  const {categories,setRecords} = useContext(AppContext); console.log(categories);
+  const { categories, setRecords } = useContext(AppContext);
+  const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
   const [amount, setAmount] = useState('');
@@ -15,14 +16,14 @@ function AddRecord() {
     e.preventDefault();
     setDesc(desc === '' ? '-' : desc);
     setRecords(rec => {
-      const newRec = [...rec, { title, desc, amount, date, type }]
+      const newRec = [...rec, { title, desc, amount, date, category, type }]
       localStorage.setItem("records", JSON.stringify(newRec));
       return newRec;
     });
   }
 
   return (
-    <div className="card mb-3 p-2 shadow bg-dark">
+    <div className={"card mb-3 p-2 shadow " + (type == 'Credit' ? "bg-success" : "bg-danger")}>
       <div className="text-start fw-bold p-2 text-light">
         Add Transaction
       </div>
@@ -54,11 +55,10 @@ function AddRecord() {
             <option className="text-success" value="Credit">Credit</option>
             <option className="text-danger" value="Debit">Debit</option>
           </select>
-             {/* value={type} onChange={e => setType(e.target.value)}> */}
-          <select className="form-select mt-2" defaultValue={'default'}>
+          <select className="form-select mt-2" defaultValue={'default'} onChange={e => setCategory(e.target.value)}>
             <option value='default' disabled={true} hidden={true}>Please Choose...</option>
             {
-              categories.map((cat,i)=> <option key={i} value={cat}>{cat}</option>)
+              categories.map((cat, i) => <option key={i} value={cat}>{cat}</option>)
             }
           </select>
           <button className="btn btn-primary col-md-1 col-sm-12 col-12 mt-2" type="submit">
