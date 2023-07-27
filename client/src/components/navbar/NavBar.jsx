@@ -8,7 +8,7 @@ function NavBar() {
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i className="fa fa-bars" aria-hidden="true"></i>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse text-center-sm" id="navbarNav">
             <ul className="navbar-nav gap-4">
               <li className="nav-item">
                 <NavLink className={'nav-link'} exact="true" to="/"><i className="fa fa-home pe-1" aria-hidden="true"></i>
