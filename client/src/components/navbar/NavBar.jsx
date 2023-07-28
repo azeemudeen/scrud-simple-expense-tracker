@@ -4,7 +4,7 @@ function NavBar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-light p-2">
         <div className="container-fluid gap-3">
-          <span className="navbar-brand ms-4 fw-bold">SCRUD</span>
+          <span className="navbar-brand ms-4 fw-bold">XPENZ</span>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i className="fa fa-bars" aria-hidden="true"></i>
           </button>
