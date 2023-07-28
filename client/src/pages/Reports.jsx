@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useContext, useState } from 'react';
-import { PieChart, Pie, Tooltip, ResponsiveContainer, AreaChart, XAxis, YAxis, CartesianGrid, Area, Sector } from 'recharts';
+import { PieChart, Pie, ResponsiveContainer, Sector } from 'recharts';
 import { AppContext } from '../App';
 
 function Reports() {
@@ -83,7 +83,7 @@ function Reports() {
   return (
     <div className="p-5">
       {
-        !isLoading && income.length ?
+        !isLoading ?
           <div className="d-md-flex justify-content-center justify-content-md-center justify-content-sm-center gap-3">
             <div className="col-md-4 col-sm-6">
               <div className="card shadow">
@@ -106,7 +106,6 @@ function Reports() {
                         onMouseEnter={(_, i) => setActiveIndexIncome(i)}
                         onTouchStart={(_, i) => setActiveIndexIncome(i)}
                       />
-                      <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
@@ -133,7 +132,6 @@ function Reports() {
                         onMouseEnter={(_, i) => setActiveIndexExpense(i)}
                         onTouchStart={(_, i) => setActiveIndexExpense(i)}
                       />
-                      <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
