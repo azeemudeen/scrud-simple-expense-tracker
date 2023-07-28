@@ -32,17 +32,17 @@ function AddRecord() {
           <input
             className='form-control mt-2'
             value={title} onChange={e => setTitle(e.target.value)}
-            type="text" required placeholder='Enter Title' />
+            type="text" required placeholder='Title' />
           <input
             className='form-control mt-2'
             value={desc} onChange={e => setDesc(e.target.value)}
-            type="text" placeholder='Enter Description' />
+            type="text" placeholder='Description' />
           <div className="input-group mt-2">
             <span className="input-group-text">₹</span>
             <input
               className='form-control'
               value={amount} onChange={e => setAmount(e.target.value)}
-              type="number" required placeholder='Enter Amount' />
+              type="number" required placeholder='Amount' />
           </div>
           <div className="input-group mt-2">
             <input
@@ -51,11 +51,11 @@ function AddRecord() {
               type="date" required />
           </div>
           <select className="form-select mt-2"
-            value={type} onChange={e => setType(e.target.value)}>
+            value={type} onChange={e => setType(e.target.value)} required>
             <option className="text-success" value="Credit">Credit</option>
             <option className="text-danger" value="Debit">Debit</option>
           </select>
-          <select className="form-select mt-2" defaultValue={'default'} onChange={e => setCategory(e.target.value)}>
+          <select className="form-select mt-2" defaultValue={'default'} onChange={e => setCategory(e.target.value)} required>
             <option value='default' disabled={true} hidden={true}>Please Choose...</option>
             {
               categories.map((cat, i) => <option key={i} value={cat}>{cat}</option>)
