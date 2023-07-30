@@ -7,7 +7,6 @@ function Reports() {
   const { records } = useContext(AppContext);
   const [income, setIncome] = useState([]);
   const [expense, setExpense] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [activeIndexIncome, setActiveIndexIncome] = useState(0);
   const [activeIndexExpense, setActiveIndexExpense] = useState(0);
   useEffect(() => {
@@ -27,11 +26,10 @@ function Reports() {
     console.log("expense", filteredExpense, "\nincome:", filteredIncome);
     setIncome(filteredIncome);
     setExpense(filteredExpense);
-    setIsLoading(false);
   }, []);
 
   const defaultData = [
-    { name: 'No Data', value: 0 },
+    { name: 'No Data', value: 100 },
   ];
 
   const renderActiveShape = (props) => {
@@ -82,64 +80,60 @@ function Reports() {
 
   return (
     <div className="p-5">
-      {
-        !isLoading ?
-          <div className="d-md-flex justify-content-center justify-content-md-center justify-content-sm-center gap-3">
-            <div className="col-md-4 col-sm-6">
-              <div className="card shadow">
-                <div className="fw-bold text-center pt-4">
-                  Income Split
-                  <hr />
-                  <ResponsiveContainer width="100%" aspect={1}>
-                    <PieChart>
-                      <Pie
-                        activeIndex={activeIndexIncome}
-                        activeShape={renderActiveShape}
-                        dataKey="value"
-                        isAnimationActive={true}
-                        data={income}
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={window.innerWidth < 550 ? 80 : 110}
-                        innerRadius={window.innerWidth < 550 ? "40%" : "40%"}
-                        cursor="pointer"
-                        onMouseEnter={(_, i) => setActiveIndexIncome(i)}
-                        onTouchStart={(_, i) => setActiveIndexIncome(i)}
-                      />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4 col-sm-6 mt-2 mt-md-0">
-              <div className="card shadow">
-                <div className="fw-bold text-center pt-4">
-                  Expense Split
-                  <hr />
-                  <ResponsiveContainer width="100%" aspect={1}>
-                    <PieChart>
-                      <Pie
-                        activeIndex={activeIndexExpense}
-                        activeShape={renderActiveShape}
-                        dataKey="value"
-                        isAnimationActive={true}
-                        data={expense}
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={window.innerWidth < 550 ? 80 : 110}
-                        innerRadius={window.innerWidth < 550 ? "40%" : "40%"}
-                        cursor="pointer"
-                        onMouseEnter={(_, i) => setActiveIndexExpense(i)}
-                        onTouchStart={(_, i) => setActiveIndexExpense(i)}
-                      />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
+      <div className="d-md-flex justify-content-center justify-content-md-center justify-content-sm-center gap-3">
+        <div className="col-md-4 col-sm-6">
+          <div className="card shadow">
+            <div className="fw-bold text-center pt-4">
+              Income Split
+              <hr />
+              <ResponsiveContainer width="100%" aspect={1}>
+                <PieChart>
+                  <Pie
+                    activeIndex={activeIndexIncome}
+                    activeShape={renderActiveShape}
+                    dataKey="value"
+                    isAnimationActive={true}
+                    data={income.length ? income : defaultData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={window.innerWidth < 550 ? 80 : 110}
+                    innerRadius={window.innerWidth < 550 ? "40%" : "40%"}
+                    cursor="pointer"
+                    onMouseEnter={(_, i) => setActiveIndexIncome(i)}
+                    onTouchStart={(_, i) => setActiveIndexIncome(i)}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </div>
           </div>
-          : 'Loading..'
-      }
+        </div>
+        <div className="col-md-4 col-sm-6 mt-2 mt-md-0">
+          <div className="card shadow">
+            <div className="fw-bold text-center pt-4">
+              Expense Split
+              <hr />
+              <ResponsiveContainer width="100%" aspect={1}>
+                <PieChart>
+                  <Pie
+                    activeIndex={activeIndexExpense}
+                    activeShape={renderActiveShape}
+                    dataKey="value"
+                    isAnimationActive={true}
+                    data={expense.length ? expense : defaultData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={window.innerWidth < 550 ? 80 : 110}
+                    innerRadius={window.innerWidth < 550 ? "40%" : "40%"}
+                    cursor="pointer"
+                    onMouseEnter={(_, i) => setActiveIndexExpense(i)}
+                    onTouchStart={(_, i) => setActiveIndexExpense(i)}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
