@@ -1,4 +1,5 @@
 .pointer{
   cursor: pointer;
-  right:0px;
+  float: right;
+  font-size: x-large;
 }

@@ -39,7 +39,7 @@ function Categories() {
           </div>
           {
             categories.map((cat, i) => {
-              return <div key={i} className="d-flex-inline col-md-3 col-sm-3 bg-primary rounded-pill align-self-center p-2 fw-bold text-white text-center text-truncate">
+              return <div key={i} className="d-flex-inline col-md-3 col-sm-3 bg-primary rounded-pill align-self-center p-2 fw-bold text-white text-center text-truncate shadow">
                 <span>{cat}</span> <i onClick={()=> removeCategory(i)} className="fa fa-times-circle pointer" aria-hidden="true"></i>
               </div>
             })
