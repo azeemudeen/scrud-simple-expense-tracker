@@ -7,10 +7,10 @@ function Home() {
   return (
     <>
       <div className='p-5'>
-        <AddRecord></AddRecord>
+        <AddRecord />
         <div className="card p-2 shadow ">
-          <Search></Search>
-          <ViewRecords></ViewRecords>
+          <Search />
+          <ViewRecords />
         </div>
       </div>
     </>
